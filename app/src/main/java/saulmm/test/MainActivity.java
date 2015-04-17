@@ -3,16 +3,15 @@ package saulmm.test;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
     private View mFab;
     private FrameLayout mFabContainer;
@@ -80,7 +79,8 @@ public class MainActivity extends Activity {
 
                 super.onAnimationEnd(animation);
                 mFab.setVisibility(View.INVISIBLE);
-                mFabContainer.setBackgroundColor(Color.YELLOW);
+                mFabContainer.setBackgroundColor(getResources()
+                    .getColor(R.color.brand_accent));
             }
         });
     }
