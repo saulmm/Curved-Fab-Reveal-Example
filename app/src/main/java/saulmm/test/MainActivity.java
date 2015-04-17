@@ -1,8 +1,12 @@
 package saulmm.test;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
@@ -14,9 +18,7 @@ public class MainActivity extends Activity {
     private FrameLayout mFabContainer;
 
     public final static float SCALE_FACTOR      = 13f;
-    public final static int FINAL_POSITION_Y    = 800;
-    public final static int FINAL_POSITION_X    = -400;
-    public final static int ANIMATION_DURATION  = 3000;
+    public final static int ANIMATION_DURATION  = 600;
 
     public float mFabSize;
 
@@ -33,11 +35,13 @@ public class MainActivity extends Activity {
 
     public void onFabPressed(View view) {
 
-        ViewPropertyAnimator animator = mFab.animate()
-            .translationX(FINAL_POSITION_X)
-            .translationY(FINAL_POSITION_Y)
-            .setDuration(ANIMATION_DURATION);
+        float endX = ((mFabContainer.getWidth()) / 2) * -1;
+        float endY = (((mFabContainer.getHeight()) / 2) + mFabSize);
 
+        ViewPropertyAnimator animator = mFab.animate()
+            .translationX(endX)
+            .translationY(endY)
+            .setDuration(ANIMATION_DURATION);
 
         animator.setUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
@@ -46,12 +50,16 @@ public class MainActivity extends Activity {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
 
-                if (mFab.getY() > 200) {
+                Log.d("[DEBUG]", "MainActivity onAnimationUpdate - " +
+                    "Hi");
+                
+                if (mFab.getY() > 150) {
 
                     if (!flag) {
 
-                        mFabContainer.setY(mFabContainer.getY() + mFabSize);
-                        ViewPropertyAnimator scaleAnimation = mFab.animate()
+                        mFabContainer.setY(mFabContainer.getY() + mFabSize/2);
+
+                        mFab.animate()
                             .scaleXBy(SCALE_FACTOR)
                             .scaleYBy(SCALE_FACTOR)
                             .setDuration(ANIMATION_DURATION);
@@ -59,9 +67,20 @@ public class MainActivity extends Activity {
                         flag = true;
 
                     } else {
-                        mFab.setY(mFab.getY()- mFabSize);
+
+                        mFab.setY(mFab.getY() - mFabSize/2 + 30);
                     }
                 }
+            }
+        });
+
+        animator.setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+                super.onAnimationEnd(animation);
+                mFab.setVisibility(View.INVISIBLE);
+                mFabContainer.setBackgroundColor(Color.YELLOW);
             }
         });
     }

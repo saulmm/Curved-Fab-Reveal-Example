@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="brand_primary">#ffff8036</color>
+    <color name="brand_primary">#FF5620</color>
+    <color name="brand_accent">#785447</color>
 </resources>
