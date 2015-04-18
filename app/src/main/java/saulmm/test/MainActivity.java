@@ -20,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
     private LinearLayout mControlsContainer;
 
     public final static float SCALE_FACTOR      = 13f;
-    public final static int ANIMATION_DURATION  = 600;
+    public final static int ANIMATION_DURATION  = 300;
     public final static int MINIMUN_X_DISTANCE  = 200;
 
     private boolean mRevealFlag;
