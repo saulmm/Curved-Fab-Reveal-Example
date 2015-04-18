@@ -86,8 +86,6 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_fast_forward_white_24dp"
                 />
-
-
         </LinearLayout>
 
         <ImageButton
@@ -103,15 +101,4 @@
             />
 
     </FrameLayout>
-
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:text="Restart"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="restart"
-        />
-
-
 </RelativeLayout>
