@@ -15,7 +15,7 @@
         android:scaleType="centerCrop"
         />
 
-    <FrameLayout
+    <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_height="126dp"
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 />
 
         </LinearLayout>
-    </FrameLayout>
+    </android.support.v7.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/fab_container"
