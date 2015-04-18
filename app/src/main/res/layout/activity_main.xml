@@ -1,16 +1,28 @@
+<!--suppress ALL -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffe8e8e8"
     tools:context=".MainActivity"
     >
+    
+    <ImageView
+        android:id="@+id/album_cover"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/cover"
+        android:scaleType="centerCrop"
+        />
 
     <FrameLayout
         android:id="@+id/toolbar"
-        android:layout_height="172dp"
+        android:layout_height="126dp"
         android:layout_width="match_parent"
         android:minHeight="?attr/actionBarSize"
+        android:layout_below="@+id/album_cover"
         android:paddingLeft="72dp"
+        android:elevation="4dp"
         android:background="?attr/colorPrimary"
         >
 
@@ -24,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yoko ono"
+            android:text="The A Team"
             android:textSize="30sp"
             android:fontFamily="sans-serif"
             android:textColor="#FFF"
@@ -33,7 +45,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A nice subtext"
+                android:text="Ed Sheeran"
                 android:textSize="18sp"
                 android:fontFamily="sans-serif-light"
                 android:textColor="#9cffffff"
@@ -41,8 +53,6 @@
                 />
 
         </LinearLayout>
-
-
     </FrameLayout>
 
     <FrameLayout
@@ -50,7 +60,8 @@
         android:layout_width="match_parent"
         android:layout_height="128dp"
         android:layout_marginTop="-30dp"
-        android:layout_below="@+id/toolbar"
+        android:elevation="10dp"
+        android:layout_below="@+id/album_cover"
         >
 
         <LinearLayout
@@ -96,9 +107,10 @@
             android:layout_gravity="top|right"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:background="@drawable/ripple"
-            android:elevation="8dp"
+            android:elevation="5dp"
             android:onClick="onFabPressed"
             />
 
     </FrameLayout>
 </RelativeLayout>
+
