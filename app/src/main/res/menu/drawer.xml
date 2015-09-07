@@ -4,8 +4,8 @@
 		<item
 			android:id="@+id/drawer_item_1"
 			android:title="Media example"/>
-		<item
-			android:id="@+id/drawer_item_2"
-			android:title="Header example"/>
+		<!--<item-->
+			<!--android:id="@+id/drawer_item_2"-->
+			<!--android:title="Header example"/>-->
 	</group>
 </menu>

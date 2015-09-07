@@ -8,7 +8,7 @@
 	android:fitsSystemWindows="true"
 	>
 
-	<LinearLayout
+	<FrameLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="vertical">
@@ -20,7 +20,7 @@
 			android:background="?attr/colorPrimary"
 			android:minHeight="?attr/actionBarSize"
 			android:elevation="4dp"
-			app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+			app:theme="@style/ThemeOverlay.AppCompat.Dark"
 			/>
 
 		<FrameLayout
@@ -28,7 +28,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			/>
-	</LinearLayout>
+	</FrameLayout>
 
 
 	<android.support.design.widget.NavigationView

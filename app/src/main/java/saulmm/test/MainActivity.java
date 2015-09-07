@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import saulmm.test.media.MediaFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,19 +47,31 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void initNavigation() {
-		mNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-			@Override
-			public boolean onNavigationItemSelected(MenuItem menuItem) {
+		mNavigation.setNavigationItemSelectedListener(
+			new NavigationView.OnNavigationItemSelectedListener() {
 
-				if (menuItem.getItemId() == R.id.drawer_item_1)
-					return true;
+				boolean handled = false;
 
-				if (menuItem.getItemId() == R.id.drawer_item_2)
-					return true;
+				@Override
+				public boolean onNavigationItemSelected(MenuItem menuItem) {
+					if (menuItem.getItemId() == R.id.drawer_item_1) {
+						initMediaFragment();
+						mToolbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+						handled = true;
+					}
 
-				mDrawerLayout.closeDrawer(Gravity.LEFT);
-				return false;
-			}
-		});
+					//if (menuItem.getItemId() == R.id.drawer_item_2) handled = true;
+
+					mDrawerLayout.closeDrawer(Gravity.LEFT);
+					return handled;
+				}
+			});
+	}
+
+	private void initMediaFragment() {
+		getSupportFragmentManager().beginTransaction()
+			.add(R.id.main_content, MediaFragment.newInstance())
+			.commit();
+
 	}
 }

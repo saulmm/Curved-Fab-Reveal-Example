@@ -1,19 +1,22 @@
-package saulmm.test;
+package saulmm.test.media;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import saulmm.test.R;
 
-
-public class MediaActivity extends ActionBarActivity {
+public class MediaFragment extends Fragment {
 
     private View mFab;
     private FrameLayout mFabContainer;
@@ -25,23 +28,33 @@ public class MediaActivity extends ActionBarActivity {
 
     private boolean mRevealFlag;
     private float mFabSize;
+    private View mRootView;
 
+    @Nullable @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mRootView = inflater.inflate(R.layout.activity_media, container, false);
+        return mRootView;
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_media);
-
-        mFab = findViewById(R.id.fab);
+    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         mFabSize = getResources().getDimensionPixelSize(R.dimen.fab_size);
+        bindViews();
+    }
 
-        mFabContainer = (FrameLayout) findViewById(R.id.fab_container);
-        mControlsContainer = (LinearLayout) findViewById(R.id.media_controls_container);
+    private void bindViews() {
+        mFab = mRootView.findViewById(R.id.fab);
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                onFabPressed(v);
+            }
+        });
+
+        mFabContainer = (FrameLayout) mRootView.findViewById(R.id.fab_container);
+        mControlsContainer = (LinearLayout) mRootView.findViewById(R.id.media_controls_container);
     }
 
     public void onFabPressed(View view) {
-
         final float startX = mFab.getX();
 
         AnimatorPath path = new AnimatorPath();
@@ -119,5 +132,9 @@ public class MediaActivity extends ActionBarActivity {
             mFab.setTranslationY(newLoc.mY - (mFabSize / 2));
         else
             mFab.setTranslationY(newLoc.mY);
+    }
+
+    public static MediaFragment newInstance () {
+        return new MediaFragment();
     }
 }

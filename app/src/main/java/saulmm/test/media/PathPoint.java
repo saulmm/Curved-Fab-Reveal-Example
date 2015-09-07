@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package saulmm.test;
+package saulmm.test.media;
 
 /**
  * A class that holds information about a location and how the path should get to that
