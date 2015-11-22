@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import saulmm.test.R;
 
 public class MediaFragment extends Fragment {
-
     private View mFab;
     private FrameLayout mFabContainer;
     private LinearLayout mControlsContainer;
@@ -77,9 +76,7 @@ public class MediaFragment extends Fragment {
 
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-
                 if (Math.abs(startX - mFab.getX()) > MINIMUN_X_DISTANCE) {
-
                     if (!mRevealFlag) {
                         mFabContainer.setY(mFabContainer.getY() + mFabSize / 2);
 
@@ -100,7 +97,6 @@ public class MediaFragment extends Fragment {
 
         @Override
         public void onAnimationEnd(Animator animation) {
-
             super.onAnimationEnd(animation);
 
             mFab.setVisibility(View.INVISIBLE);
@@ -108,7 +104,6 @@ public class MediaFragment extends Fragment {
                 .getColor(R.color.brand_accent));
 
             for (int i = 0; i < mControlsContainer.getChildCount(); i++) {
-
                 View v = mControlsContainer.getChildAt(i);
                 ViewPropertyAnimator animator = v.animate()
                     .scaleX(1).scaleY(1)
@@ -120,7 +115,6 @@ public class MediaFragment extends Fragment {
         }
     };
 
-
     /**
      * We need this setter to translate between the information the animator
      * produces (a new "PathPoint" describing the current animated location)
@@ -129,9 +123,7 @@ public class MediaFragment extends Fragment {
      * property string.
      */
     public void setFabLoc(PathPoint newLoc) {
-
         mFab.setTranslationX(newLoc.mX);
-
 
         if (mRevealFlag)
             mFab.setTranslationY(newLoc.mY - (mFabSize / 2));
